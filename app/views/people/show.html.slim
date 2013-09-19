@@ -24,4 +24,4 @@
   .col-lg-4
     h4 Best movies
     table
-      = render partial: 'people/show/best_movie', collection: @person.movies
+      = render partial: 'people/show/best_movie', collection: @person.movies.distinct

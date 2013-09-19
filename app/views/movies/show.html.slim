@@ -18,8 +18,10 @@
       - if @movie.directors.exists?
         td Director
         td
-          - @movie.directors.each do |director|
-            p= link_to director.name, person_path(director)
+          table
+            - @movie.directors.each do |director|
+              tr
+                td= link_to director.name, person_path(director)
 
       tr
         td Budget
@@ -37,3 +39,11 @@
     h4 Cast
     table
       = render partial: 'movies/show/actor', collection: @movie.actors
+
+.row
+  .col-lg-offset-2.col-lg-6
+    table.table.table-hover
+      - @actors.each do |actor|
+        tr
+          td= actor.name
+          td= actor.roles.first.title

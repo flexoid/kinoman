@@ -1,0 +1,8 @@
+.row
+  .col-lg-6
+    - @movies.each do |movie|
+      p.text-right= link_to movie.title, movie
+
+  .col-lg-6
+    - @people.each do |person|
+      p.text-left= link_to person.name, person

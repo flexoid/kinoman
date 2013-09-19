@@ -1,3 +1,4 @@
 class Actor < Person
-  has_many :role, through: :movie_people
+
+  has_many :roles, through: :movie_people
 end

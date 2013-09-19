@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20130919175238) do
   create_table "movie_people", force: true do |t|
     t.integer  "movie_id"
     t.integer  "person_id"
+    t.string   "person_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,7 +70,6 @@ ActiveRecord::Schema.define(version: 20130919175238) do
     t.string   "birthplace"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
   end
 
   create_table "roles", force: true do |t|
