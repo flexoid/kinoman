@@ -1,3 +1,8 @@
+uk, usa = Country.create!([{title: 'USA'}, {title: 'UK'}])
+
+%w(Action Adventure Mystery Sci-Fi Thriller Crime Drama).
+  map { |g| Genre.create!(title: g) }
+
 nolan = Person.create!(
   name: 'Christopher Nolan',
   birthdate: Date.today - 40.years,
@@ -36,6 +41,9 @@ dark_knight = Movie.create!(
   duration: 152
 )
 
+dark_knight.countries << [uk, usa]
+dark_knight.genres << Genre.where(title: %w(Action Crime Drama Thriller))
+
 inception = Movie.create!(
   title: 'Inception',
   year: 2010,
@@ -43,6 +51,9 @@ inception = Movie.create!(
   rating: 'PG-13',
   duration: 148
 )
+
+inception.countries << [uk, usa]
+inception.genres << Genre.where(title: %w(Action Thriller Adventure Mystery Sci-Fi))
 
 dark_knight.directors << nolan.becomes(Director)
 

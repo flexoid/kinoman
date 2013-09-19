@@ -24,8 +24,16 @@
                 td= link_to director.name, person_path(director)
 
       tr
+        td Countries
+        td= @movie.countries.map(&:title).join(', ')
+
+      tr
         td Budget
         td= number_to_currency @movie.budget, precision: 0
+
+      tr
+        td Genres
+        td= @movie.genres.map(&:title).join(', ')
 
       tr
         td Rating
