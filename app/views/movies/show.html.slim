@@ -1,0 +1,39 @@
+.row
+  .col-lg-12
+    h3= @movie.title
+    - if @movie.orig_title
+      h4= @movie.orig_title
+
+.row
+  .col-lg-4
+    .thumbnail
+      img data-src="holder.js/200x300"
+
+  .col-lg-4
+    table.table
+      tr
+        td Year
+        td= @movie.year
+
+      - if @movie.directors.exists?
+        td Director
+        td
+          - @movie.directors.each do |director|
+            p= link_to director.name, person_path(director)
+
+      tr
+        td Budget
+        td= number_to_currency @movie.budget, precision: 0
+
+      tr
+        td Rating
+        td= @movie.rating
+
+      tr
+        td Duration (min.)
+        td= @movie.duration
+
+  .col-lg-4
+    h4 Cast
+    table
+      = render partial: 'movies/show/actor', collection: @movie.actors

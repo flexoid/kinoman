@@ -1,0 +1,27 @@
+.row
+  .col-lg-4
+    h3= @person.name
+
+.row
+  .col-lg-4
+    .thumbnail
+        img data-src="holder.js/200x300"
+
+  .col-lg-4
+    table.table
+      tr
+        td Birth Date
+        td= @person.birthdate
+
+      tr
+        td Birthplace
+        td= @person.birthplace
+
+      tr
+        td Birth Date
+        td= @person.birthdate
+
+  .col-lg-4
+    h4 Best movies
+    table
+      = render partial: 'people/show/best_movie', collection: @person.movies

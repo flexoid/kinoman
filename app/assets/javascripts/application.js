@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// Include all twitter's javascripts
+//= require twitter/bootstrap
+
+$(document).bind('page:change', function() {
+  Holder.run();
+});
