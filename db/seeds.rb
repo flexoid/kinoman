@@ -16,12 +16,32 @@ ledger = Person.create!(
   birthplace: 'Manhattan, New York City, New York, USA'
 )
 
+dicaprio = Person.create!(
+  name: 'Leonardo DiCaprio',
+  birthdate: Date.today - 39.years,
+  birthplace: 'Hollywood, Los Angeles, California, USA'
+)
+
+murphy = Person.create!(
+  name: 'Cillian Murphy',
+  birthdate: Date.today - 37.years,
+  birthplace: 'Douglas, Cork, Ireland'
+)
+
 dark_knight = Movie.create!(
   title: 'The Dark Knight',
   year: 2008,
   budget: 185_000_000,
   rating: 'PG-13',
   duration: 152
+)
+
+inception = Movie.create!(
+  title: 'Inception',
+  year: 2010,
+  budget: 160_000_000,
+  rating: 'PG-13',
+  duration: 148
 )
 
 dark_knight.directors << nolan.becomes(Director)
@@ -31,3 +51,15 @@ dark_knight.movie_people.where(person_id: bale.id).first.create_role!(title: 'Br
 
 dark_knight.actors << ledger.becomes(Actor)
 dark_knight.movie_people.where(person_id: ledger.id).first.create_role!(title: 'Joker')
+
+dark_knight.actors << murphy.becomes(Actor)
+dark_knight.movie_people.where(person_id: murphy.id).first.create_role!(title: 'Scarecrow')
+
+
+inception.directors << nolan.becomes(Director)
+
+inception.actors << dicaprio.becomes(Actor)
+inception.movie_people.where(person_id: dicaprio.id).first.create_role!(title: 'Cobb')
+
+inception.actors << murphy.becomes(Actor)
+inception.movie_people.where(person_id: murphy.id).first.create_role!(title: 'Robert Fischer')
