@@ -5,11 +5,14 @@
       h4= @movie.orig_title
 
 .row
-  .col-lg-4
+  .col-lg-3
     .thumbnail
-      img data-src="holder.js/200x300"
+      - if @movie.poster.exists?
+        = image_tag @movie.poster.url(:show)
+      - else
+        img data-src="holder.js/200x300"
 
-  .col-lg-4
+  .col-lg-5
     table.table
       tr
         td Year

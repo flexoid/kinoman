@@ -14,4 +14,5 @@ class Movie < ActiveRecord::Base
 
   validates :title, presence: true
 
+  has_attached_file :poster, styles: { show: '200x300>' }
 end

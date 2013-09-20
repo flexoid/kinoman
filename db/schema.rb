@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130919175238) do
+ActiveRecord::Schema.define(version: 20130920000402) do
 
   create_table "countries", force: true do |t|
     t.string   "title"
@@ -56,11 +56,15 @@ ActiveRecord::Schema.define(version: 20130919175238) do
     t.string   "title"
     t.string   "orig_title"
     t.integer  "year"
-    t.decimal  "budget",     precision: 18, scale: 4
+    t.decimal  "budget",              precision: 18, scale: 4
     t.string   "rating"
     t.integer  "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
   end
 
   create_table "people", force: true do |t|
@@ -70,6 +74,10 @@ ActiveRecord::Schema.define(version: 20130919175238) do
     t.string   "birthplace"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "roles", force: true do |t|

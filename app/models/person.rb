@@ -4,4 +4,6 @@ class Person < ActiveRecord::Base
   has_many :movies, through: :movie_people
 
   validates :name, presence: true
+
+  has_attached_file :photo, styles: { show: '300x400>' }
 end

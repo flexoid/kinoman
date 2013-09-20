@@ -8,30 +8,40 @@ nolan = Person.create!(
   birthdate: Date.today - 40.years,
   birthplace: 'London, England, UK'
 )
+nolan.photo = File.open(Rails.root + 'db/files/nolan.jpg')
+nolan.save!
 
 bale = Person.create!(
   name: 'Christian Bale',
   birthdate: Date.today - 39.years,
   birthplace: 'Haverfordwest, Pembrokeshire, Wales, UK'
 )
+bale.photo = File.open(Rails.root + 'db/files/bale.jpg')
+bale.save!
 
 ledger = Person.create!(
   name: 'Heath Ledger',
   birthdate: Date.today - 35.years,
   birthplace: 'Manhattan, New York City, New York, USA'
 )
+ledger.photo = File.open(Rails.root + 'db/files/ledger.jpg')
+ledger.save!
 
 dicaprio = Person.create!(
   name: 'Leonardo DiCaprio',
   birthdate: Date.today - 39.years,
   birthplace: 'Hollywood, Los Angeles, California, USA'
 )
+dicaprio.photo = File.open(Rails.root + 'db/files/dicaprio.jpg')
+dicaprio.save!
 
 murphy = Person.create!(
   name: 'Cillian Murphy',
   birthdate: Date.today - 37.years,
   birthplace: 'Douglas, Cork, Ireland'
 )
+murphy.photo = File.open(Rails.root + 'db/files/murphy.jpg')
+murphy.save!
 
 dark_knight = Movie.create!(
   title: 'The Dark Knight',
@@ -43,6 +53,8 @@ dark_knight = Movie.create!(
 
 dark_knight.countries << [uk, usa]
 dark_knight.genres << Genre.where(title: %w(Action Crime Drama Thriller))
+dark_knight.poster = File.open(Rails.root + 'db/files/dark_knight.jpg')
+dark_knight.save!
 
 inception = Movie.create!(
   title: 'Inception',
@@ -54,6 +66,8 @@ inception = Movie.create!(
 
 inception.countries << [uk, usa]
 inception.genres << Genre.where(title: %w(Action Thriller Adventure Mystery Sci-Fi))
+inception.poster = File.open(Rails.root + 'db/files/inception.jpg')
+inception.save!
 
 dark_knight.directors << nolan.becomes(Director)
 

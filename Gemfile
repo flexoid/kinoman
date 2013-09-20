@@ -35,6 +35,7 @@ gem 'slim-rails'
 gem 'thin'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
 gem 'cancan'
+gem 'paperclip', '~> 3.0'
 
 group :development, :test do
   gem 'quiet_assets'
