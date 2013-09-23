@@ -3,14 +3,14 @@
     h3= @person.name
 
 .row
-  .col-lg-4
+  .col-lg-3
     .thumbnail
       - if @person.photo.exists?
         = image_tag @person.photo.url(:show)
       - else
-        img data-src="holder.js/300x400"
+        img data-src="holder.js/200x300"
 
-  .col-lg-4
+  .col-lg-5
     table.table
       tr
         td Birth Date

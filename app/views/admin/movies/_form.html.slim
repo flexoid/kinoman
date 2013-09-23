@@ -1,0 +1,12 @@
+= simple_form_for [:admin, @movie], defaults: { :input_html => { :class => "form-control" } } do |f|
+
+  = f.input :title
+  = f.input :year
+  = f.input :budget
+  = f.input :rating
+  = f.input :duration
+  = f.input :poster, as: :image_preview, input_html: {preview_version: 'show'}
+
+  .form-group
+    .col-lg-offset-2.col-lg-2
+      = f.button :submit, class: 'btn-default'

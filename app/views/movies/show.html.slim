@@ -52,9 +52,9 @@
       = render partial: 'movies/show/actor', collection: @movie.actors
 
 .row
-  .col-lg-offset-2.col-lg-6
+  .col-lg-offset-3.col-lg-5
     table.table.table-hover
       - @actors.each do |actor|
         tr
-          td= actor.name
+          td= link_to actor.name, actor.becomes(Person)
           td= actor.roles.first.title

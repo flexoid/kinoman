@@ -5,5 +5,5 @@ class Person < ActiveRecord::Base
 
   validates :name, presence: true
 
-  has_attached_file :photo, styles: { show: '300x400>' }
+  has_attached_file :photo, styles: { show: '200x300>' }
 end
