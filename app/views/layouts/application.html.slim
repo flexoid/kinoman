@@ -12,4 +12,13 @@ html
         .jumbotron.text-center
           h1= link_to 'Kinoman', root_path
 
+      - if notice.present?
+        .alert.alert-info.alert-dismissable
+          button type="button" class="close" data-dismiss="alert" aria-hidden="true" &times;
+          = notice
+      - if alert.present?
+        .alert.alert-danger.alert-dismissable
+          button type="button" class="close" data-dismiss="alert" aria-hidden="true" &times;
+          = alert
+
       = yield
