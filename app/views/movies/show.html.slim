@@ -1,8 +1,11 @@
-.row
+.row.movie-title
   .col-lg-12
     h3= @movie.title
     - if @movie.orig_title
       h4= @movie.orig_title
+
+    = link_to edit_admin_movie_path(@movie), class: 'edit-movie'
+      span.glyphicon.glyphicon-edit
 
 .row
   .col-lg-3

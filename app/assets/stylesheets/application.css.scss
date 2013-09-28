@@ -17,3 +17,10 @@
 
 // import original bootstrap
 @import "twitter/bootstrap";
+
+.movie-title {
+  h3, h4 {
+    display: inline-block;
+    padding-right: 10px;
+  }
+}
