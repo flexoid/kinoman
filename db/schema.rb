@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130928093409) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "countries", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -82,7 +85,7 @@ ActiveRecord::Schema.define(version: 20130928093409) do
 
   create_table "roles", force: true do |t|
     t.string   "title"
-    t.decimal  "fee",             precision: 10, scale: 0
+    t.decimal  "fee",             precision: 18, scale: 4
     t.integer  "movie_person_id"
     t.datetime "created_at"
     t.datetime "updated_at"

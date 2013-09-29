@@ -1,26 +1,23 @@
 development:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   database: kinoman_development
   pool: 5
-  username: root
+  username: kinoman
   password:
-  socket: /tmp/mysql.sock
 
 test:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   database: kinoman_test
   pool: 5
-  username: root
+  username: kinoman
   password:
-  socket: /tmp/mysql.sock
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   database: kinoman_production
   pool: 5
-  username: root
+  username: kinoman
   password:
-  socket: /tmp/mysql.sock
