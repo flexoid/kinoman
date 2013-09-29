@@ -4,8 +4,9 @@
     - if @movie.orig_title
       h4= @movie.orig_title
 
-    = link_to edit_admin_movie_path(@movie), class: 'edit-movie'
-      span.glyphicon.glyphicon-edit
+    - if can? :edit, @movie
+      = link_to edit_admin_movie_path(@movie), class: 'edit-movie'
+        span.glyphicon.glyphicon-edit
 
 .row
   .col-md-3.col-xs-4

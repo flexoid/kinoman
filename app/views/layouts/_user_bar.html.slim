@@ -5,18 +5,18 @@
       strong= current_user.username
 
     = link_to destroy_user_session_path, method: :delete do
-      span.glyphicon.glyphicon-log-in
-      '  Log in
+      span.glyphicon.glyphicon-log-out
+      '  Sign out
 
     = link_to edit_user_registration_path do
       span.glyphicon.glyphicon-edit
-        ' Edit
+      '  Edit registration
 
   - else
 
     = link_to new_user_session_path do
       span.glyphicon.glyphicon-log-in
-      '  Log in
+      '  Sign in
 
     = link_to new_user_registration_path do
       span.glyphicon.glyphicon-asterisk
