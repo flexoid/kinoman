@@ -12,6 +12,8 @@ class Movie < ActiveRecord::Base
   has_and_belongs_to_many :countries
   has_and_belongs_to_many :genres
 
+  has_many :reviews
+
   validates :title, presence: true
 
   has_attached_file :poster, styles: { show: '200x300>' }

@@ -7,10 +7,13 @@ class Ability
   end
 
   def guest
+    can :read, Movie
   end
 
   def user
     guest
+
+    can :create, Review
   end
 
   def admin

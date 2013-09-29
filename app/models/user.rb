@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
 
   validates :role, inclusion: {in: ROLES}
   validates :username, presence: true, uniqueness: true
+
+  has_many :reviews
 end

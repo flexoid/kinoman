@@ -1,0 +1,8 @@
+= simple_form_for [@movie, @review], defaults: { :input_html => { :class => "form-control" } } do |f|
+
+  = f.input :title
+  = f.input :content
+
+  .form-group
+    .col-lg-offset-2.col-lg-2
+      = f.button :submit, class: 'btn btn-default'
