@@ -12,6 +12,8 @@ html
         .jumbotron.text-center
           h1= link_to 'Kinoman', root_path
 
+        = render 'layouts/user_bar'
+
       - if notice.present?
         .alert.alert-info.alert-dismissable
           button type="button" class="close" data-dismiss="alert" aria-hidden="true" &times;

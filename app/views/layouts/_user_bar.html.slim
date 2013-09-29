@@ -1,0 +1,23 @@
+.user-bar
+  - if current_user
+
+    div
+      strong= current_user.username
+
+    = link_to destroy_user_session_path, method: :delete do
+      span.glyphicon.glyphicon-log-in
+      '  Log in
+
+    = link_to edit_user_registration_path do
+      span.glyphicon.glyphicon-edit
+        ' Edit
+
+  - else
+
+    = link_to new_user_session_path do
+      span.glyphicon.glyphicon-log-in
+      '  Log in
+
+    = link_to new_user_registration_path do
+      span.glyphicon.glyphicon-asterisk
+      '  Sign up

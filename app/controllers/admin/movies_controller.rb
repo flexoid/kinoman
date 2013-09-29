@@ -1,5 +1,5 @@
 class Admin::MoviesController < ApplicationController
-  load_resource
+  load_and_authorize_resource
 
   respond_to :html
 

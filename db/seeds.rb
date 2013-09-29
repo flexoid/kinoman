@@ -1,3 +1,8 @@
+User.create!(email: 'admin@example.com', password: 'admin@example.com',
+  username: 'admin', role: User::ADMIN)
+User.create!(email: 'flexoid@example.com', password: 'flexoid@example.com',
+  username: 'flexoid', role: User::USER)
+
 uk, usa = Country.create!([{title: 'USA'}, {title: 'UK'}])
 
 %w(Action Adventure Mystery Sci-Fi Thriller Crime Drama).

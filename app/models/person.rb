@@ -6,4 +6,8 @@ class Person < ActiveRecord::Base
   validates :name, presence: true
 
   has_attached_file :photo, styles: { show: '200x300>' }
+
+  def role_for_movie(movie)
+    movie_people.where(movie: movie).map(&:person_type).join(', ')
+  end
 end

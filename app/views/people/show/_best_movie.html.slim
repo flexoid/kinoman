@@ -1,5 +1,0 @@
-tr
-  td
-    = link_to best_movie.title, movie_path(best_movie)
-    br
-    small= @person.movie_people.where(movie: Movie.first).map(&:person_type).join(', ')

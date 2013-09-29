@@ -1,16 +1,16 @@
 .row
-  .col-lg-4
+  .col-md-4
     h3= @person.name
 
 .row
-  .col-lg-3
+  .col-md-3.col-xs-4
     .thumbnail
       - if @person.photo.exists?
         = image_tag @person.photo.url(:show)
       - else
         img data-src="holder.js/200x300"
 
-  .col-lg-5
+  .col-md-5.col-xs-8
     table.table
       tr
         td Birth Date
@@ -24,7 +24,8 @@
         td Birth Date
         td= @person.birthdate
 
-  .col-lg-4
+.row
+  .col-md-offset-3.col-md-5.col-xs-12
     h4 Best movies
-    table
-      = render partial: 'people/show/best_movie', collection: @person.movies.distinct
+    table.table.table-hover
+      = render partial: 'people/movie', collection: @person.movies.distinct

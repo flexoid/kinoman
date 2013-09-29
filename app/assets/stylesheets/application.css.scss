@@ -24,3 +24,17 @@
     padding-right: 10px;
   }
 }
+
+header {
+  position: relative;
+
+  .user-bar {
+    position: absolute;
+    bottom: 10px;
+    left: 8px;
+
+    a {
+      padding-right: 8px;
+    }
+  }
+}
