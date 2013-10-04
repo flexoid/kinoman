@@ -36,6 +36,7 @@ gem 'cancan'
 gem 'paperclip', '~> 3.0'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'devise'
+gem 'nprogress-rails'
 
 group :development, :test do
   gem 'quiet_assets'

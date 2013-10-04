@@ -78,6 +78,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.0)
     nokogiri (1.5.10)
+    nprogress-rails (0.1.2.3)
     orm_adapter (0.4.0)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
@@ -179,6 +180,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   jquery-rails
+  nprogress-rails
   paperclip (~> 3.0)
   pg
   pry-rails
