@@ -40,3 +40,29 @@ header {
     }
   }
 }
+
+.review {
+  margin-top: 20px;
+
+  .header {
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $pre-border-color;
+
+    .author {
+      float: left;
+    }
+
+    .time {
+      float: right;
+    }
+
+    .clear {
+      clear: both;
+    }
+  }
+
+  .content {
+    padding-top: 10px;
+  }
+}

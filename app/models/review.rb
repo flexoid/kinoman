@@ -2,5 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :movie
   belongs_to :user
 
-  validates :movie, :user, :title, :content, presence: true
+  validates :movie, :user, :content, presence: true
+
+  scope :approved, -> { where(approved: true) }
 end

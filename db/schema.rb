@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20130929181021) do
   create_table "reviews", force: true do |t|
     t.integer  "movie_id"
     t.integer  "user_id"
-    t.string   "title"
     t.text     "content"
+    t.boolean  "approved",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

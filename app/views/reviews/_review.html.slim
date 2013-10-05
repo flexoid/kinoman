@@ -1,6 +1,9 @@
 .review
-  .title
-    p
-      strong= review.title
+
+  .header
+    .author= review.user.username
+    .time= review.created_at
+    .clear
+
   .content
     p= review.content
