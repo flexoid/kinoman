@@ -64,6 +64,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.1)
+    faker (1.2.0)
+      i18n (~> 0.5)
     hike (1.2.3)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -179,6 +181,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   devise
+  faker
   jquery-rails
   nprogress-rails
   paperclip (~> 3.0)

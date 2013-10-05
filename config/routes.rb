@@ -6,6 +6,9 @@ Kinoman::Application.routes.draw do
   resources :movies, only: [:show] do
     resources :reviews
   end
+  resources :grades do
+    post 'rate', on: :collection
+  end
 
   resources :people, only: [:show]
 

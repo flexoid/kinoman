@@ -12,9 +12,14 @@ class Movie < ActiveRecord::Base
   has_and_belongs_to_many :countries
   has_and_belongs_to_many :genres
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :grades, dependent: :destroy
 
   validates :title, presence: true
 
   has_attached_file :poster, styles: { show: '200x300>' }
+
+  def grade
+    (grades.average(:value) || 0).round(1).to_f
+  end
 end

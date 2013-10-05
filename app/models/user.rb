@@ -12,5 +12,9 @@ class User < ActiveRecord::Base
   validates :role, inclusion: {in: ROLES}
   validates :username, presence: true, uniqueness: true
 
-  has_many :reviews
+  has_many :grades, dependent: :destroy
+
+  def grade_for_movie(movie)
+    grades.where(movie_id: movie.id).first
+  end
 end

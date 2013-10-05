@@ -43,6 +43,10 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+group :development do
+  gem 'faker'
+end
+
 gem 'rails_12factor', group: :production
 gem 'aws-sdk'
 

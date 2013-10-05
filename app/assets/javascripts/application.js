@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
+//= require bootstrap-rating-input
 //= require_tree .
 
 // Include all twitter's javascripts

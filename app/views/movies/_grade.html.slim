@@ -1,0 +1,12 @@
+.grade*{'data-movie_id' => @movie.id}
+  .rating Rating:
+  .details
+    span.badge= @movie.grade
+    .stars
+      = rating_input(@movie)
+    .info
+      small.grades-count= "#{@movie.grades.count} users"
+      - if @grade
+        small.my-grade
+          ' My rate:
+          span.badge= @grade.value

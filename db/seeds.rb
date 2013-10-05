@@ -93,3 +93,14 @@ inception.movie_people.where(person_id: dicaprio.id).first.create_role!(title: '
 
 inception.actors << murphy.becomes(Actor)
 inception.movie_people.where(person_id: murphy.id).first.create_role!(title: 'Robert Fischer')
+
+
+1000.times do
+  begin
+    user = User.create!(email: Faker::Internet.email, username: Faker::Internet.user_name, password: Faker::Internet.password)
+    Movie.all.each do |movie|
+      movie.grades.create!(user: user, value: rand(1..10))
+    end
+  rescue ActiveRecord::RecordInvalid
+  end
+end
