@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
 
   has_many :grades, dependent: :destroy
+  has_many :threads
+  has_many :messages
 
   def grade_for_movie(movie)
     grades.where(movie_id: movie.id).first

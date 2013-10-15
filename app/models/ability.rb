@@ -8,6 +8,9 @@ class Ability
 
   def guest
     can :read, Movie
+
+    can :read, Forum::Category
+    can :read, Forum::Thread
   end
 
   def user

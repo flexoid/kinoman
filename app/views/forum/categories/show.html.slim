@@ -1,0 +1,17 @@
+.row
+  .col-md-12
+
+    h2= @category.title
+
+    table.table.table-striped
+      thead
+        th Title
+        th Messages count
+        th Last message
+
+      tbody
+        - @category.threads.each do |thread|
+          tr.thread
+            td= link_to thread.title, thread
+            td= thread.messages.count
+            td= last_message(thread)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131005061852) do
+ActiveRecord::Schema.define(version: 20131012110318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,36 @@ ActiveRecord::Schema.define(version: 20131005061852) do
 
   add_index "countries_movies", ["country_id"], name: "index_countries_movies_on_country_id", using: :btree
   add_index "countries_movies", ["movie_id"], name: "index_countries_movies_on_movie_id", using: :btree
+
+  create_table "forum_categories", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forum_categories", ["title"], name: "index_forum_categories_on_title", using: :btree
+
+  create_table "forum_messages", force: true do |t|
+    t.integer  "thread_id"
+    t.integer  "author_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forum_messages", ["author_id"], name: "index_forum_messages_on_author_id", using: :btree
+  add_index "forum_messages", ["thread_id"], name: "index_forum_messages_on_thread_id", using: :btree
+
+  create_table "forum_threads", force: true do |t|
+    t.string   "title"
+    t.integer  "author_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forum_threads", ["author_id"], name: "index_forum_threads_on_author_id", using: :btree
+  add_index "forum_threads", ["category_id"], name: "index_forum_threads_on_category_id", using: :btree
 
   create_table "genres", force: true do |t|
     t.string   "title"

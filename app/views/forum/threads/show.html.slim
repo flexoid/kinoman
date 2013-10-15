@@ -1,0 +1,7 @@
+.row
+  .col-md-12
+
+    h3= @thread.title
+
+    - @thread.messages.each do |message|
+      = render message

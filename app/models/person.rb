@@ -10,4 +10,8 @@ class Person < ActiveRecord::Base
   def role_for_movie(movie)
     movie_people.where(movie: movie).map(&:person_type).join(', ')
   end
+
+  private
+
+    # def create_thread
 end

@@ -12,7 +12,12 @@ html
         .jumbotron.text-center
           h1= link_to 'Kinoman', root_path
 
-        = render 'layouts/user_bar'
+        .links-bar
+          = render 'layouts/user_bar'
+
+          = link_to forum_root_path do
+            span.glyphicon.glyphicon-bullhorn
+            '  Forum
 
       - if notice.present?
         .alert.alert-info.alert-dismissable

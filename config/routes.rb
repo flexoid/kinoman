@@ -1,5 +1,9 @@
 Kinoman::Application.routes.draw do
 
+  namespace :forum do
+    resources :messages
+  end
+
   devise_for :users
   root to: 'home#index'
 
@@ -13,7 +17,13 @@ Kinoman::Application.routes.draw do
   resources :people, only: [:show]
 
   namespace :admin do
-
     resources :movies, except: [:show]
+  end
+
+  namespace :forum do
+    root to: 'categories#index'
+
+    resources :categories, except: [:index]
+    resources :threads
   end
 end
