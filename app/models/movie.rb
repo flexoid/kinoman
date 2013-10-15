@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  include Discussible
 
   has_many :movie_people
 
@@ -22,4 +23,14 @@ class Movie < ActiveRecord::Base
   def grade
     (grades.average(:value) || 0).round(1).to_f
   end
+
+  private
+
+    def forum_category
+      'Movies discussion'
+    end
+
+    def forum_thread_name
+      title
+    end
 end

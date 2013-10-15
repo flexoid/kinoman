@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  include Discussible
 
   has_many :movie_people
   has_many :movies, through: :movie_people
@@ -13,5 +14,11 @@ class Person < ActiveRecord::Base
 
   private
 
-    # def create_thread
+    def forum_category
+      'People discussion'
+    end
+
+    def forum_thread_name
+      name
+    end
 end

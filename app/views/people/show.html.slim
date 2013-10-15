@@ -10,7 +10,7 @@
       - else
         img data-src="holder.js/200x300"
 
-  .col-md-5.col-xs-8
+  .col-md-7.col-xs-8
     table.table
       tr
         td Birth Date
@@ -23,6 +23,9 @@
       tr
         td Birth Date
         td= @person.birthdate
+
+  .col-md-2
+    = render 'shared/forum_block', discussible: @person
 
 .row
   .col-md-offset-3.col-md-5.col-xs-12
