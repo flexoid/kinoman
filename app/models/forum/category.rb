@@ -1,5 +1,5 @@
 class Forum::Category < ActiveRecord::Base
-  ADMIN_EMAIL             = 'admin@example.com'
+  ADMIN_EMAIL = 'admin@example.com'
 
   has_many :threads
 

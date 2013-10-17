@@ -2,7 +2,7 @@ module Discussible
   extend ActiveSupport::Concern
 
   included do
-    has_one :thread, as: :discussible, class_name: 'Forum::Thread'
+    has_one :thread, as: :discussible, class_name: 'Forum::Thread', dependent: :destroy
     after_create :create_forum_thread
   end
 
