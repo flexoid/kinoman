@@ -67,6 +67,9 @@ GEM
     faker (1.2.0)
       i18n (~> 0.5)
     hike (1.2.3)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.5)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -79,6 +82,7 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.0)
+    multi_xml (0.5.5)
     nokogiri (1.5.10)
     nprogress-rails (0.1.2.3)
     orm_adapter (0.4.0)
@@ -151,6 +155,8 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     temple (0.6.6)
+    themoviedb (0.0.8)
+      httparty
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -194,6 +200,7 @@ DEPENDENCIES
   sdoc
   simple_form (~> 3.0.0.rc)
   slim-rails
+  themoviedb
   thin
   turbolinks
   uglifier (>= 1.3.0)

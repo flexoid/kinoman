@@ -45,6 +45,7 @@ end
 
 group :development do
   gem 'faker'
+  gem 'themoviedb'
 end
 
 gem 'rails_12factor', group: :production
