@@ -45,11 +45,11 @@ end
 
 group :development do
   gem 'faker'
-  gem 'themoviedb'
 end
 
 gem 'rails_12factor', group: :production
 gem 'aws-sdk'
+gem 'themoviedb'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
