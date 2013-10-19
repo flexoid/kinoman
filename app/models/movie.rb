@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
   include Discussible
+  include ImageLoadable
 
   has_many :movie_people
 
@@ -19,13 +20,10 @@ class Movie < ActiveRecord::Base
   validates :title, presence: true
 
   has_attached_file :poster, styles: { show: '200x300>' }
+  loadable_image :poster
 
   def grade
     (grades.average(:value) || 0).round(1).to_f
-  end
-
-  def poster_from_url(url)
-    self.poster = open(url)
   end
 
   private
