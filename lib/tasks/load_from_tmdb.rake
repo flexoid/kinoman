@@ -14,8 +14,10 @@ task load_from_tmdb: :environment do
     end
   end
 
-  page_from = ENV['PAGE_FROM'] || 1
-  page_to = ENV['PAGE_TO'] || page_from
+  page_from = ENV['PAGE_FROM'].to_i
+  page_from = 1 if page_from < 1
+  page_to = ENV['PAGE_TO'].to_i
+  page_to = page_from if page_to < 1
 
   Tmdb::Api.key("349fc3c6431a7a9fff4cd8ff9b7dd268")
   base_url = Tmdb::Configuration.new.base_url
@@ -40,26 +42,26 @@ task load_from_tmdb: :environment do
             year: year,
             budget: movie_basic['budget'],
             duration: movie_basic['runtime'],
-            api_data: {tmdb_id: movie_basic['id']}
+            tmdb_data: movie_basic
           })
 
           movie.poster_from_url("#{base_url}/w342/#{movie_basic['poster_path']}") if movie_basic['poster_path'].present?
           movie.save!
 
           movie_basic['production_countries'].each do |country_data|
-            country = Country.where(title: country_data['name']).first_or_create!
+            country = Country.where(title: country_data['name']).first_or_create!(tmdb_data: country_data)
             movie.countries << country
           end
 
           movie_basic['genres'].each do |genre_data|
-            genre = Genre.where(title: genre_data['name']).first_or_create!
+            genre = Genre.where(title: genre_data['name']).first_or_create!(tmdb_data: genre_data)
             movie.genres << genre
           end
 
           movie_people = Tmdb::Search.new("/movie/#{movie_short['id']}/casts").fetch_response
 
           movie_people['cast'].each do |cast|
-            person = Person.where(name: cast['name']).first_or_create!(api_data: {tmdb_id: cast['id']})
+            person = Person.where(name: cast['name']).first_or_create!(tmdb_data: cast)
             movie.actors << person.becomes(Actor)
             movie.movie_people.where(person_id: person.id).first.create_role!(title: cast['character'])
           end
@@ -67,7 +69,7 @@ task load_from_tmdb: :environment do
           crew_hash = {"Director" => Director, "Producer" => Producer, "Original Music Composer" => Composer}
           movie_people['crew'].each do |crew|
             if klass = crew_hash[crew['job']]
-              person = Person.where(name: crew['name']).first_or_create!(api_data: {tmdb_id: crew['id']})
+              person = Person.where(name: crew['name']).first_or_create!(tmdb_data: crew)
               movie.public_send(klass.to_s.downcase.pluralize) << person.becomes(klass)
             end
           end
@@ -84,7 +86,7 @@ task load_from_tmdb: :environment do
       ActiveRecord::Base.transaction do
         puts "#{i + 1}. #{person.name}"
 
-        person_data = Tmdb::Search.new("/person/#{person.api_data['tmdb_id']}").fetch_response
+        person_data = Tmdb::Search.new("/person/#{person.tmdb_data['id']}").fetch_response
         birthdate = Date.parse(person_data['birthday']) rescue nil
         person.birthdate = birthdate if birthdate
         person.birthplace = person_data['place_of_birth'] if person_data['place_of_birth'].present?
