@@ -24,6 +24,10 @@ class Movie < ActiveRecord::Base
     (grades.average(:value) || 0).round(1).to_f
   end
 
+  def poster_from_url(url)
+    self.poster = open(url)
+  end
+
   private
 
     def forum_category

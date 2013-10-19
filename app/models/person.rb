@@ -12,6 +12,10 @@ class Person < ActiveRecord::Base
     movie_people.where(movie: movie).map(&:person_type).join(', ')
   end
 
+  def photo_from_url(url)
+    self.photo = open(url)
+  end
+
   private
 
     def forum_category
