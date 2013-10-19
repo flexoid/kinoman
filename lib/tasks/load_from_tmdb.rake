@@ -14,13 +14,16 @@ task load_from_tmdb: :environment do
     end
   end
 
+  page_from = ENV['PAGE_FROM'] || 1
+  page_to = ENV['PAGE_TO'] || page_from
+
   Tmdb::Api.key("349fc3c6431a7a9fff4cd8ff9b7dd268")
   base_url = Tmdb::Configuration.new.base_url
 
   movie_search = Tmdb::Search.new('/movie/popular')
   i = 0
 
-  (1..20).each do |movie_page|
+  (page_from..page_to).each do |movie_page|
     movies = movie_search.fetch(page: movie_page)
 
     movies.each do |movie_short|
