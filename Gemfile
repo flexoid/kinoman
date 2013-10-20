@@ -37,11 +37,11 @@ gem 'paperclip', '~> 3.0'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'devise'
 gem 'nprogress-rails'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'quiet_assets'
   gem 'pry-rails'
-  gem 'dotenv-rails'
 end
 
 group :development do
