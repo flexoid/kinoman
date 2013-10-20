@@ -41,6 +41,7 @@ gem 'nprogress-rails'
 group :development, :test do
   gem 'quiet_assets'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
