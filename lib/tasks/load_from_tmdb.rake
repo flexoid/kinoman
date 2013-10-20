@@ -1,18 +1,18 @@
-task load_from_tmdb: :environment do
+module Tmdb
+  class Search
+    def fetch(options = {})
+      fetch_response(options)['results']
+    end
 
-  module Tmdb
-    class Search
-      def fetch(options = {})
-        fetch_response(options)['results']
-      end
-
-      def fetch_response(options = {})
-        options = @params.merge(Api.config).merge(options)
-        response = Api.get(@resource, :query => options, :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json' })
-        response.to_hash
-      end
+    def fetch_response(options = {})
+      options = @params.merge(Api.config).merge(options)
+      response = Api.get(@resource, :query => options, :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json' })
+      response.to_hash
     end
   end
+end
+
+task load_from_tmdb: :environment do
 
   page_from = ENV['PAGE_FROM'].to_i
   page_from = 1 if page_from < 1
@@ -91,6 +91,7 @@ task load_from_tmdb: :environment do
         person.birthdate = birthdate if birthdate
         person.birthplace = person_data['place_of_birth'] if person_data['place_of_birth'].present?
         person.photo_from_url("#{base_url}/h632/#{person_data['profile_path']}") if person_data['profile_path'].present?
+        person.tmdb_data = person.tmdb_data.merge(person_data)
 
         person.save!
       end
