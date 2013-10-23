@@ -35,7 +35,7 @@ task load_from_tmdb: :environment do
         ActiveRecord::Base.transaction do
 
           movie_basic = Tmdb::Search.new("/movie/#{movie_short['id']}").fetch_response
-          year = Date.parse(Tmdb::Search.new('/movie/100/releases').fetch_response['countries'][0]['release_date']).year
+          year = Date.parse(Tmdb::Search.new("/movie/#{movie_short['id']}/releases").fetch_response['countries'][0]['release_date']).year
 
           movie = Movie.new({
             title: movie_basic['title'],
@@ -45,7 +45,7 @@ task load_from_tmdb: :environment do
             tmdb_data: movie_basic
           })
 
-          movie.poster_from_url("#{base_url}/w342/#{movie_basic['poster_path']}") if movie_basic['poster_path'].present?
+          movie.poster_from_url("#{base_url}/w342/#{movie_basic['poster_path']}", movie.title) if movie_basic['poster_path'].present?
           movie.save!
 
           movie_basic['production_countries'].each do |country_data|
@@ -61,16 +61,16 @@ task load_from_tmdb: :environment do
           movie_people = Tmdb::Search.new("/movie/#{movie_short['id']}/casts").fetch_response
 
           movie_people['cast'].each do |cast|
-            person = Person.where(name: cast['name']).first_or_create!(tmdb_data: cast)
-            movie.actors << person.becomes(Actor)
-            movie.movie_people.where(person_id: person.id).first.create_role!(title: cast['character'])
+            person = Person.where(name: cast['name']).first_or_create!(tmdb_data: cast.slice('id'))
+            mp = movie.movie_people.create!(person: person, person_type: 'Actor', tmdb_data: cast)
+            mp.create_role!(title: cast['character'])
           end
 
           crew_hash = {"Director" => Director, "Producer" => Producer, "Original Music Composer" => Composer}
           movie_people['crew'].each do |crew|
             if klass = crew_hash[crew['job']]
-              person = Person.where(name: crew['name']).first_or_create!(tmdb_data: crew)
-              movie.public_send(klass.to_s.downcase.pluralize) << person.becomes(klass)
+              person = Person.where(name: crew['name']).first_or_create!(tmdb_data: crew.slice('id'))
+              movie.movie_people.create!(person: person, person_type: klass.name, tmdb_data: crew)
             end
           end
 
@@ -90,7 +90,7 @@ task load_from_tmdb: :environment do
         birthdate = Date.parse(person_data['birthday']) rescue nil
         person.birthdate = birthdate if birthdate
         person.birthplace = person_data['place_of_birth'] if person_data['place_of_birth'].present?
-        person.photo_from_url("#{base_url}/h632/#{person_data['profile_path']}") if person_data['profile_path'].present?
+        person.photo_from_url("#{base_url}/h632/#{person_data['profile_path']}", person.name) if person_data['profile_path'].present?
         person.tmdb_data = person.tmdb_data.merge(person_data)
 
         person.save!

@@ -16,6 +16,9 @@
 /tmp
 
 /public/system
+/public/assets/
 
 /.env*
 !/.env.*example
+
+/vendor/bundle

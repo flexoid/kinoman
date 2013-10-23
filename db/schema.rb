@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019094453) do
+ActiveRecord::Schema.define(version: 20131023214352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20131019094453) do
     t.string   "person_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.json     "tmdb_data",   default: {}
   end
 
   add_index "movie_people", ["movie_id"], name: "index_movie_people_on_movie_id", using: :btree
