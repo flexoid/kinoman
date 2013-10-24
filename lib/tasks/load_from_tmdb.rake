@@ -30,8 +30,8 @@ task load_from_tmdb: :environment do
 
     movies.each do |movie_short|
       i += 1
-      puts "#{i}. #{movie_short['title']}"
       begin
+        puts "#{i}. #{movie_short['title']}"
         ActiveRecord::Base.transaction do
 
           movie_basic = Tmdb::Search.new("/movie/#{movie_short['id']}").fetch_response
@@ -81,7 +81,7 @@ task load_from_tmdb: :environment do
     end
   end
 
-  Person.all.each.with_index do |person, i|
+  Person.where("(tmdb_data->>'adult')::boolean is null").each.with_index do |person, i|
     begin
       ActiveRecord::Base.transaction do
         puts "#{i + 1}. #{person.name}"

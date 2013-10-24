@@ -11,8 +11,8 @@
 .row
   .col-md-3.col-xs-4
     .thumbnail
-      - if @movie.poster.exists?
-        = image_tag @movie.poster.url(:show)
+      - if url = image_url(@movie.poster, :show)
+        = image_tag url
       - else
         img data-src="holder.js/200x300"
 

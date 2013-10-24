@@ -5,8 +5,8 @@
 .row
   .col-md-3.col-xs-4
     .thumbnail
-      - if @person.photo.exists?
-        = image_tag @person.photo.url(:show)
+      - if url = image_url(@person.photo, :show)
+        = image_tag url
       - else
         img data-src="holder.js/200x300"
 
