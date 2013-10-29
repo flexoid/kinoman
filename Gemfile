@@ -39,6 +39,7 @@ gem 'devise'
 gem 'nprogress-rails'
 gem 'dotenv-rails'
 gem 'twitter-typeahead-rails', github: 'yourabi/twitter-typeahead-rails'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   gem 'quiet_assets'

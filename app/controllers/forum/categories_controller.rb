@@ -6,5 +6,6 @@ class Forum::CategoriesController < ApplicationController
   end
 
   def show
+    @threads = @category.threads.paginate(page:params[:page])
   end
 end

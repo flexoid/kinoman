@@ -10,8 +10,10 @@
         th Last message
 
       tbody
-        - @category.threads.each do |thread|
+        - @threads.each do |thread|
           tr.thread
             td= link_to thread.title, thread
             td= thread.messages.count
             td= last_message(thread)
+
+= will_paginate @threads, renderer: BootstrapPagination::Rails
