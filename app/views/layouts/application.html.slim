@@ -7,17 +7,9 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   body
+    = render 'layouts/navbar'
+
     .container
-      header
-        .jumbotron.text-center
-          h1= link_to 'Kinoman', root_path
-
-        .links-bar
-          = render 'layouts/user_bar'
-
-          = link_to forum_root_path do
-            span.glyphicon.glyphicon-bullhorn
-            '  Forum
 
       - if notice.present?
         .alert.alert-info.alert-dismissable

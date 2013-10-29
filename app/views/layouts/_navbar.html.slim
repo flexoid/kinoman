@@ -1,0 +1,44 @@
+nav.navbar.navbar-default role="navigation"
+  .navbar-header
+    button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    = link_to 'Kinoman', root_path, class: 'navbar-brand'
+
+  .collapse.navbar-collapse.navbar-ex1-collapse
+    ul.nav.navbar-nav
+      li
+        = link_to forum_root_path do
+          span.glyphicon.glyphicon-bullhorn
+          |  Forum
+
+      - if current_user
+        li
+          = link_to destroy_user_session_path, method: :delete do
+            span.glyphicon.glyphicon-log-out
+            '  Sign out
+
+        li
+          = link_to edit_user_registration_path do
+            span.glyphicon.glyphicon-edit
+            '  Edit registration
+
+      - else
+
+        li
+          = link_to new_user_session_path do
+            span.glyphicon.glyphicon-log-in
+            '  Sign in
+
+        li
+          = link_to new_user_registration_path do
+            span.glyphicon.glyphicon-asterisk
+            '  Sign up
+
+    ul.nav.navbar-nav.navbar-right
+      form.navbar-form.navbar-left role="search"
+        .form-group
+          input.form-control#global-search type="text" placeholder="Search"
+        button.btn.btn-default type="submit" Submit
