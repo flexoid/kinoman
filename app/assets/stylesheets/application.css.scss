@@ -21,6 +21,10 @@
 // import original bootstrap
 @import "twitter/bootstrap";
 
+.search_templates {
+  display: none;
+}
+
 .movie-title {
   h3, h4 {
     display: inline-block;

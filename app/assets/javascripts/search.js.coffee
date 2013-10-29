@@ -24,7 +24,7 @@ class @GlobalSearch
       Turbolinks.visit(element.url)
 
   @movieTemplate: ->
-    "{{title}}"
+    $('.search_templates .movie').html()
 
   @personTemplate: ->
-    "{{name}}"
+    $('.search_templates .person').html()

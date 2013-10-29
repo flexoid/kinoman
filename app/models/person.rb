@@ -11,7 +11,11 @@ class Person < ActiveRecord::Base
   loadable_image :photo
 
   def role_for_movie(movie)
-    movie_people.where(movie: movie).map(&:person_type).join(', ')
+    movie_people.where(movie: movie).pluck(:person_type).join(', ')
+  end
+
+  def all_roles
+    movie_people.pluck('DISTINCT person_type').join(', ')
   end
 
   private
