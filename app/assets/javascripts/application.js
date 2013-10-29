@@ -16,11 +16,18 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require bootstrap-rating-input
+//= require twitter/typeahead
+//= require hogan
 //= require_tree .
 
 // Include all twitter's javascripts
 //= require twitter/bootstrap
 
+$(document).ready(function() {
+  GlobalSearch.initialize();
+});
+
 $(document).bind('page:change', function() {
   Holder.run();
+  GlobalSearch.initialize();
 });

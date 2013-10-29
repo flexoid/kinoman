@@ -1,15 +1,15 @@
 Kinoman::Application.routes.draw do
 
-  namespace :forum do
-    resources :messages
-  end
-
   devise_for :users
   root to: 'home#index'
+
+  get 'search/movies', to: 'search#movies'
+  get 'search/people', to: 'search#people'
 
   resources :movies, only: [:show] do
     resources :reviews
   end
+
   resources :grades do
     post 'rate', on: :collection
   end
@@ -25,5 +25,6 @@ Kinoman::Application.routes.draw do
 
     resources :categories, except: [:index]
     resources :threads
+    resources :messages
   end
 end
