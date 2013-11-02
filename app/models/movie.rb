@@ -17,6 +17,8 @@ class Movie < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :grades, dependent: :destroy
 
+  has_one :favorite_movie, dependent: :destroy
+
   validates :title, presence: true
 
   has_attached_file :poster, styles: { show: '200x300>' }

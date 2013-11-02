@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :create_favorite_lists
+
   GUEST = 'guest'
   USER  = 'user'
   ADMIN = 'admin'
@@ -13,10 +15,21 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
 
   has_many :grades, dependent: :destroy
-  has_many :threads
-  has_many :messages
+  has_many :favorites_lists, dependent: :destroy
+
+  has_many :forum_threads, class_name: 'Forum::Thread', foreign_key: 'author_id'
+  has_many :forum_messages, class_name: 'Forum::Message', foreign_key: 'author_id'
 
   def grade_for_movie(movie)
     grades.where(movie_id: movie.id).first
+  end
+
+  def create_favorite_lists
+    favorites_lists.create(title: 'Favorites')
+  end
+
+  def all_favorites_lists
+    t = FavoritesList.arel_table
+    FavoritesList.where(t[:user_id].eq(id).or(t[:global].eq(true)))
   end
 end

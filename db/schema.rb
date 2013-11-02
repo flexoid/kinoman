@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023214352) do
+ActiveRecord::Schema.define(version: 20131102092205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,29 @@ ActiveRecord::Schema.define(version: 20131023214352) do
 
   add_index "countries_movies", ["country_id"], name: "index_countries_movies_on_country_id", using: :btree
   add_index "countries_movies", ["movie_id"], name: "index_countries_movies_on_movie_id", using: :btree
+
+  create_table "favorite_movies", force: true do |t|
+    t.integer  "movie_id"
+    t.integer  "user_id"
+    t.integer  "favorites_list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorite_movies", ["favorites_list_id"], name: "index_favorite_movies_on_favorites_list_id", using: :btree
+  add_index "favorite_movies", ["movie_id"], name: "index_favorite_movies_on_movie_id", using: :btree
+  add_index "favorite_movies", ["user_id"], name: "index_favorite_movies_on_user_id", using: :btree
+
+  create_table "favorites_lists", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.boolean  "global",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites_lists", ["global"], name: "index_favorites_lists_on_global", using: :btree
+  add_index "favorites_lists", ["user_id"], name: "index_favorites_lists_on_user_id", using: :btree
 
   create_table "forum_categories", force: true do |t|
     t.string   "title"

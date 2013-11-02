@@ -1,0 +1,9 @@
+.dropdown
+  a.btn.btn-default data-toggle="dropdown"
+    ' My movies
+    b.caret
+
+  ul.dropdown-menu role="menu"
+    - current_user.all_favorites_lists.each do |list|
+      li role="presentation"
+        a #{list.title}
