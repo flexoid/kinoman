@@ -4,10 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :initialize_user
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   private
 
     def initialize_user
       @sign_in_user = User.new
+    end
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) << :username
     end
 end
