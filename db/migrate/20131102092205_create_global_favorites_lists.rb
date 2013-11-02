@@ -1,6 +1,6 @@
 class CreateGlobalFavoritesLists < ActiveRecord::Migration
   DEFAULT_LISTS = [
-    'Favorite movies',
+    'Favorites',
     'Want to buy',
     'Watch at TV'
   ]

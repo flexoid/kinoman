@@ -1,6 +1,5 @@
 Kinoman::Application.routes.draw do
 
-  get "profiles/show"
   devise_for :users
   root to: 'home#index'
 
@@ -19,6 +18,11 @@ Kinoman::Application.routes.draw do
 
   resource :profile, only: [:show] do
     get 'movies'
+  end
+
+  resources :favorites_lists, only: [] do
+    post 'add_movie/:movie_id', action: :add_movie, as: :add_movie
+    post 'remove_movie/:movie_id', action: :remove_movie, as: :remove_movie
   end
 
   namespace :admin do

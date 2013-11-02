@@ -8,7 +8,15 @@ class FavoritesList < ActiveRecord::Base
 
   scope :global, -> { where(global: true) }
 
-  def has_movie?(movie)
-    favorite_movies.where(movie_id: movie).exists?
+  def has_movie?(movie, user)
+    favorite_movies.where(movie_id: movie, user_id: user).exists?
+  end
+
+  def add_movie(movie, user)
+    favorite_movies.create(movie: movie, user: user)
+  end
+
+  def remove_movie(movie, user)
+    favorite_movies.where(movie_id: movie, user_id: user).first.try(:destroy)
   end
 end

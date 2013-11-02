@@ -1,4 +1,4 @@
-.dropdown
+.dropdown class=('open' if request.xhr?)
   a.btn.btn-default data-toggle="dropdown"
     ' My movies
     b.caret
@@ -6,4 +6,4 @@
   ul.dropdown-menu role="menu"
     - current_user.all_favorites_lists.each do |list|
       li role="presentation"
-        a #{list.title}
+        = link_to_favorite_movie_action(list, movie)
