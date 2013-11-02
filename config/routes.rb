@@ -1,5 +1,6 @@
 Kinoman::Application.routes.draw do
 
+  get "profiles/show"
   devise_for :users
   root to: 'home#index'
 
@@ -15,6 +16,10 @@ Kinoman::Application.routes.draw do
   end
 
   resources :people, only: [:show]
+
+  resource :profile, only: [:show] do
+    get 'movies'
+  end
 
   namespace :admin do
     resources :movies, except: [:show]

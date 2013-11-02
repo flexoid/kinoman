@@ -9,21 +9,17 @@ nav.navbar.navbar-default role="navigation"
 
   .collapse.navbar-collapse.navbar-ex1-collapse
     ul.nav.navbar-nav
-      li
-        = link_to forum_root_path do
-          span.glyphicon.glyphicon-bullhorn
-          |  Forum
 
       - if current_user
+        li
+          = link_to profile_path do
+            / span.glyphicon.glyphicon-edit
+            = current_user.username
+
         li
           = link_to destroy_user_session_path, method: :delete do
             span.glyphicon.glyphicon-log-out
             '  Sign out
-
-        li
-          = link_to edit_user_registration_path do
-            span.glyphicon.glyphicon-edit
-            '  Edit registration
 
       - else
 
@@ -38,7 +34,12 @@ nav.navbar.navbar-default role="navigation"
             '  Sign up
 
     ul.nav.navbar-nav.navbar-right
+      li
+        = link_to forum_root_path do
+          span.glyphicon.glyphicon-bullhorn
+          |  Forum
+
       form.navbar-form.navbar-left role="search"
         .form-group
           input.form-control#global-search type="text" placeholder="Search"
-        button.btn.btn-default type="submit" Submit
+        button.btn.btn-default type="submit" Search
