@@ -1,1 +1,13 @@
 = render 'profiles/tabs'
+
+.row
+
+  .col-md-4
+    ul.nav
+      - current_user.all_favorites_lists.each do |list|
+        li
+          = link_to list.title, movies_profile_path(list_id: list.id)
+
+  .col-md-8
+    - @movies.each do |movie|
+      = render 'favorite_movie', movie: movie

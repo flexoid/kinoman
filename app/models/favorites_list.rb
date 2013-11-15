@@ -1,6 +1,7 @@
 class FavoritesList < ActiveRecord::Base
   belongs_to :user
   has_many :favorite_movies, dependent: :destroy
+  has_many :movies, through: :favorite_movies
 
   validates :title, presence: true
   validates :user, presence: true, unless: :global?
