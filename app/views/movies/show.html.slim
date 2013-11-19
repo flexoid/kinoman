@@ -16,8 +16,9 @@
       - else
         img data-src="holder.js/200x300"
 
-    .my-movies
-      = render 'my_movies', movie: @movie
+    - if current_user
+      .my-movies
+        = render 'my_movies', movie: @movie
 
   .col-md-7.col-xs-8
     table.table
@@ -69,7 +70,8 @@
   .col-md-offset-3.col-md-7
     h4 Reviews
 
-    = link_to 'Add new review', new_movie_review_path(@movie)
+    - if can? :create, Review
+      = link_to 'Add new review', new_movie_review_path(@movie)
 
     - if @reviews.any?
       = render @reviews
