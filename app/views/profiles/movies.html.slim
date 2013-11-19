@@ -3,9 +3,9 @@
 .row
 
   .col-md-4
-    ul.nav
+    ul.nav.nav-pills.nav-stacked
       - current_user.all_favorites_lists.each do |list|
-        li
+        li class=('active' if params[:list_id] == list.id.to_s)
           = link_to list.title, movies_profile_path(list_id: list.id)
 
   .col-md-8
