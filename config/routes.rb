@@ -33,7 +33,8 @@ Kinoman::Application.routes.draw do
     root to: 'categories#index'
 
     resources :categories, except: [:index]
-    resources :threads
-    resources :messages
+    resources :threads, only: [:show] do
+      resources :messages, only: [:create]
+    end
   end
 end

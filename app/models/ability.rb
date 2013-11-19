@@ -17,6 +17,7 @@ class Ability
     guest
 
     can :create, Review
+    can :create, Forum::Message
   end
 
   def admin
