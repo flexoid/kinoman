@@ -1,1 +1,21 @@
 = render 'profiles/tabs'
+
+p
+  b Username
+  br
+  = current_user.username
+
+p
+  b Email
+  br
+  = current_user.email
+
+p
+  b Role
+  br
+  = current_user.role.humanize
+
+p
+  b Sign in count
+  br
+  = current_user.sign_in_count

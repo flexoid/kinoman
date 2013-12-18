@@ -6,6 +6,9 @@
     - @thread.messages.each do |message|
       = render message
 
+    - if @thread.messages.count == 0
+      h5 There are no messages yes
+
     - if can? :create, @new_message
       h3 Add new message
       = render 'forum/messages/form', new_message: @new_message

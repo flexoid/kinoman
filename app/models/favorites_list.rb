@@ -20,4 +20,8 @@ class FavoritesList < ActiveRecord::Base
   def remove_movie(movie, user)
     favorite_movies.where(movie_id: movie, user_id: user).first.try(:destroy)
   end
+
+  def movies_for_user(user)
+    movies.where(['favorite_movies.user_id = ?', user.id])
+  end
 end

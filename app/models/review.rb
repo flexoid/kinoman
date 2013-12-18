@@ -4,5 +4,6 @@ class Review < ActiveRecord::Base
 
   validates :movie, :user, :content, presence: true
 
-  scope :approved, -> { where(approved: true) }
+  # scope :approved, -> { where(approved: true) }
+  scope :approved, -> { scoped }
 end

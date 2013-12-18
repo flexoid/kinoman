@@ -1,0 +1,6 @@
+.card
+  a href=(person_path(person))
+    - if url = image_url(person.photo, :show)
+      = image_tag url
+    - else
+      img data-src="holder.js/200x300"

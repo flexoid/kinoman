@@ -9,6 +9,6 @@ class ProfilesController < ApplicationController
     end
 
     list = FavoritesList.find(params[:list_id])
-    @movies = list.movies
+    @movies = list.movies_for_user(current_user)
   end
 end

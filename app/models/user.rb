@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
   has_many :forum_threads, class_name: 'Forum::Thread', foreign_key: 'author_id'
   has_many :forum_messages, class_name: 'Forum::Message', foreign_key: 'author_id'
 
+  before_create do
+    self.role = USER
+  end
+
   def grade_for_movie(movie)
     grades.where(movie_id: movie.id).first
   end

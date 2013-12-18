@@ -97,3 +97,13 @@
 .navbar-right {
   padding-right: 20px;
 }
+
+.cards {
+  text-align: center;
+
+  .card {
+    display: inline-block;
+    max-width: 250px;
+    margin: 15px;
+  }
+}

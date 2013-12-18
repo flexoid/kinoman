@@ -9,5 +9,6 @@
           = link_to list.title, movies_profile_path(list_id: list.id)
 
   .col-md-8
-    - @movies.each do |movie|
-      = render 'favorite_movie', movie: movie
+    ul.list-group
+      - @movies.each do |movie|
+        = render 'favorite_movie', movie: movie

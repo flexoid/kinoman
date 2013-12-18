@@ -1,0 +1,6 @@
+.card
+  a href=(movie_path(movie))
+    - if url = image_url(movie.poster, :show)
+      = image_tag url
+    - else
+      img data-src="holder.js/200x300"

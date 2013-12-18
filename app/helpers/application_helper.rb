@@ -19,4 +19,17 @@ module ApplicationHelper
       end
     end
   end
+
+  def render_breadcrumbs(breadcrumbs)
+    if breadcrumbs.present?
+      content_tag 'ol', class: 'breadcrumb' do
+        ''.tap do |content|
+          breadcrumbs[0...-1].each do |breadcrumb|
+            content << content_tag('li', content_tag('a', breadcrumb[0], href: breadcrumb[1]))
+          end
+          content << content_tag('li', breadcrumbs[-1][0])
+        end.html_safe
+      end
+    end
+  end
 end
