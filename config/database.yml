@@ -1,23 +1,12 @@
-development:
+development: &default
   adapter: postgresql
   encoding: utf8
   database: kinoman_development
   pool: 5
-  username: kinoman
+  username: postgres
   password:
+  host: db
 
 test:
-  adapter: postgresql
-  encoding: utf8
+  <<: *default
   database: kinoman_test
-  pool: 5
-  username: kinoman
-  password:
-
-production:
-  adapter: postgresql
-  encoding: utf8
-  database: kinoman_production
-  pool: 5
-  username: kinoman
-  password:
